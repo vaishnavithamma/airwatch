@@ -1,0 +1,246 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ========================================================================
+   AirWatch Hyderabad — Global Design System
+   ======================================================================== */
+
+@layer base {
+  :root {
+    /* Color tokens */
+    --color-navy-950: #030712;
+    --color-navy-900: #0F172A;
+    --color-navy-800: #1E293B;
+    --color-navy-700: #334155;
+    --color-navy-600: #475569;
+    --color-navy-500: #64748B;
+    --color-sky-500: #0EA5E9;
+    --color-sky-600: #0284C7;
+    --color-surface: #FFFFFF;
+    --color-surface-muted: #F8FAFC;
+    --color-surface-subtle: #F1F5F9;
+    --color-border: #E2E8F0;
+    --color-border-strong: #CBD5E1;
+    /* AQI category colors */
+    --aqi-good: #22C55E;
+    --aqi-satisfactory: #84CC16;
+    --aqi-moderate: #F59E0B;
+    --aqi-poor: #F97316;
+    --aqi-very-poor: #EF4444;
+    --aqi-severe: #7C3AED;
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgba(0,0,0,0.05), 0 1px 2px -1px rgba(0,0,0,0.05);
+    --shadow-card-md: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -2px rgba(0,0,0,0.05);
+    --shadow-card-lg: 0 10px 15px -3px rgba(0,0,0,0.08), 0 4px 6px -4px rgba(0,0,0,0.05);
+  }
+
+  .dark {
+    --color-surface: #0F172A;
+    --color-surface-muted: #1E293B;
+    --color-surface-subtle: #334155;
+    --color-border: #334155;
+    --color-border-strong: #475569;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply font-sans text-navy-900 bg-surface-muted;
+    font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-semibold leading-tight text-navy-900;
+  }
+}
+
+@layer components {
+  /* Card components */
+  .card {
+    @apply bg-white rounded-card border border-slate-200 shadow-card;
+  }
+
+  .card-md {
+    @apply bg-white rounded-card border border-slate-200 shadow-card-md;
+  }
+
+  .card-hover {
+    @apply card transition-shadow duration-200 hover:shadow-card-md;
+  }
+
+  /* Buttons */
+  .btn-primary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-sky-500 text-white font-medium rounded-lg
+           hover:bg-sky-600 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2
+           transition-colors duration-150 text-sm;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 bg-white text-navy-700 font-medium rounded-lg
+           border border-slate-200 hover:bg-slate-50 focus:outline-none focus:ring-2
+           focus:ring-sky-500 focus:ring-offset-2 transition-colors duration-150 text-sm;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 text-navy-600 font-medium rounded-lg
+           hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2
+           transition-colors duration-150 text-sm;
+  }
+
+  /* Form controls */
+  .input {
+    @apply w-full px-3 py-2 text-sm text-navy-900 bg-white border border-slate-200 rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500
+           placeholder:text-slate-400 transition-colors duration-150;
+  }
+
+  .select {
+    @apply w-full px-3 py-2 text-sm text-navy-900 bg-white border border-slate-200 rounded-lg
+           focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-sky-500
+           transition-colors duration-150 cursor-pointer;
+  }
+
+  /* Badge/chip */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+  }
+
+  /* AQI category badges */
+  .badge-good { @apply badge bg-green-100 text-green-800; }
+  .badge-satisfactory { @apply badge bg-lime-100 text-lime-800; }
+  .badge-moderate { @apply badge bg-amber-100 text-amber-800; }
+  .badge-poor { @apply badge bg-orange-100 text-orange-800; }
+  .badge-very-poor { @apply badge bg-red-100 text-red-800; }
+  .badge-severe { @apply badge bg-purple-100 text-purple-800; }
+
+  /* Page layout */
+  .page-header {
+    @apply mb-6 pb-4 border-b border-slate-200;
+  }
+
+  .page-title {
+    @apply text-2xl font-bold text-navy-900;
+  }
+
+  .page-subtitle {
+    @apply text-sm text-navy-500 mt-1;
+  }
+
+  /* Section header */
+  .section-header {
+    @apply flex items-center justify-between mb-4;
+  }
+
+  .section-title {
+    @apply text-base font-semibold text-navy-800;
+  }
+
+  /* Historical data badge */
+  .historical-badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 bg-amber-50 text-amber-700
+           border border-amber-200 rounded-full text-xs font-medium;
+  }
+
+  /* Stat label/value */
+  .stat-label {
+    @apply text-xs font-medium text-navy-500 uppercase tracking-wide;
+  }
+
+  .stat-value {
+    @apply text-2xl font-bold text-navy-900;
+  }
+
+  .stat-unit {
+    @apply text-sm font-medium text-navy-500 ml-1;
+  }
+
+  /* Divider */
+  .divider {
+    @apply border-t border-slate-200 my-4;
+  }
+
+  /* Sidebar nav item */
+  .nav-item {
+    @apply flex items-center gap-3 px-3 py-2 rounded-lg text-sm font-medium
+           text-navy-600 hover:bg-slate-100 hover:text-navy-900
+           transition-colors duration-150 cursor-pointer;
+  }
+
+  .nav-item-active {
+    @apply nav-item bg-sky-50 text-sky-700 hover:bg-sky-100 hover:text-sky-800;
+  }
+
+  /* Chart container */
+  .chart-container {
+    @apply relative w-full;
+  }
+
+  /* Tooltip */
+  .chart-tooltip {
+    @apply bg-white border border-slate-200 rounded-lg shadow-card-md p-3;
+  }
+
+  /* Empty state */
+  .empty-state {
+    @apply flex flex-col items-center justify-center py-12 text-center;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { @apply bg-slate-100; }
+  ::-webkit-scrollbar-thumb { @apply bg-slate-300 rounded-full; }
+  ::-webkit-scrollbar-thumb:hover { @apply bg-slate-400; }
+
+  /* Focus ring */
+  .focus-ring {
+    @apply focus:outline-none focus:ring-2 focus:ring-sky-500 focus:ring-offset-2;
+  }
+
+  /* Leaflet map overrides */
+  .leaflet-container {
+    @apply rounded-card font-sans;
+  }
+
+  .leaflet-popup-content-wrapper {
+    @apply rounded-xl shadow-card-lg border-0;
+  }
+
+  .leaflet-popup-tip {
+    @apply bg-white;
+  }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .transition-fast { @apply transition-all duration-150 ease-out; }
+  .transition-med { @apply transition-all duration-300 ease-out; }
+
+  /* AQI color utilities */
+  .text-aqi-good { color: var(--aqi-good); }
+  .text-aqi-satisfactory { color: var(--aqi-satisfactory); }
+  .text-aqi-moderate { color: var(--aqi-moderate); }
+  .text-aqi-poor { color: var(--aqi-poor); }
+  .text-aqi-very-poor { color: var(--aqi-very-poor); }
+  .text-aqi-severe { color: var(--aqi-severe); }
+
+  .bg-aqi-good { background-color: var(--aqi-good); }
+  .bg-aqi-satisfactory { background-color: var(--aqi-satisfactory); }
+  .bg-aqi-moderate { background-color: var(--aqi-moderate); }
+  .bg-aqi-poor { background-color: var(--aqi-poor); }
+  .bg-aqi-very-poor { background-color: var(--aqi-very-poor); }
+  .bg-aqi-severe { background-color: var(--aqi-severe); }
+
+  /* Grid utilities */
+  .grid-kpi { @apply grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4; }
+}
